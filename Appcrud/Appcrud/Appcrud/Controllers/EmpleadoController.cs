@@ -2,6 +2,7 @@
 using Appcrud.Data;
 using Appcrud.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 
 namespace Appcrud.Controllers
 {
@@ -32,6 +33,30 @@ namespace Appcrud.Controllers
         public async Task<IActionResult> Nuevo(Empleado empleado)
         {
             await _appDBContext.Empleados.AddAsync(empleado);
+            await _appDBContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Lista));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Editar(int id)
+        {
+            Empleado empleado = await _appDBContext.Empleados.FirstAsync(e => e.IdEmpleado == id);
+            return View(empleado);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Editar(Empleado empleado)
+        {
+             _appDBContext.Empleados.Update(empleado);
+            await _appDBContext.SaveChangesAsync();
+            return RedirectToAction(nameof(Lista));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Eliminar(int id)
+        {
+            Empleado empleado = await _appDBContext.Empleados.FirstAsync(e => e.IdEmpleado == id);
+            _appDBContext.Empleados.Remove(empleado);
             await _appDBContext.SaveChangesAsync();
             return RedirectToAction(nameof(Lista));
         }

@@ -2,6 +2,12 @@ html {
   font-size: 14px;
 }
 
+/*Quest.cshtml*/
+
+.short_question {
+    all: unset;
+}
+
 
 @media (min-width: 768px) {
   html {

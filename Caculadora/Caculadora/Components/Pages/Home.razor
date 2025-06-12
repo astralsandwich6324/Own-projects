@@ -1,0 +1,55 @@
+﻿@page "/"
+@inject IJSRuntime js
+@rendermode InteractiveServer 
+
+<PageTitle>Home</PageTitle>
+
+<h2>Calculadora</h2>
+
+
+
+<input type="number" bind="@number" />
+
+<button @onclick="Resultado">
+    Es igual
+</button>
+
+<button @onclick="() => Operaciones(1)">Suma</button>
+
+<button>Resta</button>
+
+<button>Multiplicacion</button>
+
+<button>Division</button>
+
+
+@code{
+    int valor1;
+    int valor2;
+
+    int number;
+    
+
+
+    void Operaciones(int signo){
+        switch(signo){
+            case 1:
+                valor1 = number;
+                number = 0;
+
+                return;
+
+        }
+
+    }
+
+    void Resultado(){
+        valor2 = number;
+
+        number = valor1 + valor2;
+    }
+
+    
+
+
+}

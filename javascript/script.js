@@ -4,6 +4,12 @@ const miObject = {};
 let x = 0;
 let y = 0;
 
+
+/**document.addEventListener("DOMContentLoaded", function () {
+            addQuestion();
+
+        }); */
+
 function Question() {
     let id = n;
 

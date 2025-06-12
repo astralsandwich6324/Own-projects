@@ -1,0 +1,29 @@
+﻿@page
+
+@* @model itla_virtual.Views.Forms.QuestModel *@
+
+<div>
+    <button onclick="addQuestion()" class="btn btn-primary mb-3">
+        Añadir pregunta
+    </button>
+</div>
+
+<div id="lista_preguntas" class="container-sm">
+</div>
+
+
+<form id="form" asp-controller="Form"
+      method="post" asp-action="NewData">
+
+      
+
+<button id="btnguardar" class="btn btn-warning" type="submit" hidden>Guardar</button>
+</form>
+
+@{
+    string url = "https://localhost:7039/Form/NewData";
+
+    HttpClient client = new HttpClient();
+
+
+}
