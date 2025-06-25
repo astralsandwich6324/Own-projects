@@ -109,11 +109,12 @@
                     return;
                 case 10:
                     const numeros = document.getElementById("input1");
-                    numeros.value = ".";
+                    numeros.value += ".";
                     return;
             }
 
         }
+
 
         function Operaciones(n) {
 
@@ -127,7 +128,7 @@
 
                     const val1 = document.getElementById("input1");
 
-                    valor1 += parseInt(val1.value);
+                    valor1 += parseFloat(val1.value);
 
                     Historial = val1.value;
 
@@ -149,7 +150,7 @@
                     press++;
                     signo = "-";
                     const val2 = document.getElementById("input1");
-                    valor1 -= parseInt(val2.value);
+                    valor1 -= parseFloat(val2.value);
 
                     Historial = val2.value;
 
@@ -173,9 +174,9 @@
                     const val3 = document.getElementById("input1");
 
                     if (valor1 != 0) {
-                        valor1 *= parseInt(val3.value);
+                        valor1 *= parseFloat(val3.value);
                     } else {
-                        valor1 = parseInt(val3.value);
+                        valor1 = parseFloat(val3.value);
                     }
 
                     Historial = val3.value;
@@ -199,9 +200,9 @@
                     const val4 = document.getElementById("input1");
 
                     if (valor1 != 0) {
-                        valor1 /= parseInt(val4.value);
+                        valor1 /= parseFloat(val4.value);
                     } else {
-                        valor1 = parseInt(val4.value);
+                        valor1 = parseFloat(val4.value);
                     }
 
                     Historial = val4.value;
@@ -225,25 +226,36 @@
 
         function Resultados() {
             const input = document.getElementById("input1");
-            x = parseInt(input.value);
+            x = parseFloat(input.value);
             let n = 0;
 
             if (press === 0) {
-                n = parseInt(input.value);
+                n = parseFloat(input.value);
                 input.value = n;
             }
             else if (press === 1 && signo === "+") {
-                n = parseInt(input.value);
+                n = parseFloat(input.value);
 
                 valor1 += n;
                 input.value = valor1;
 
             }
             else if (press === 1 && signo === "*") {
-                n = parseInt(input.value);
+                n = parseFloat(input.value);
                 valor1 *= n;
                 input.value = valor1;
             }
+            else if(press === 1 && signo === "/"){
+                n = parseFloat(input.value);
+                valor1 /= n;
+                input.value = valor1; 
+            }
+            else if(press === 1 && signo === "-"){
+                n = parseFloat(input.value);
+                valor1 -= n;
+                input.value = valor1; 
+            }
+            
             else {
                 input.value = valor1;
             }
@@ -297,7 +309,7 @@
                 Char = "0";
                 press = 0;
             }
-            lastchar.value = parseInt(Char);
+            lastchar.value = parseFloat(Char);
 
 
         }
